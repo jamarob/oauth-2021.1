@@ -1,0 +1,17 @@
+{
+  "name": "oauth-2021",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier --write ."
+  },
+  "author": "Jan Robert",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "dependencies": {
+    "concurrently": "6.0.0"
+  }
+}
