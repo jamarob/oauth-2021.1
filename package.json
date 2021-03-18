@@ -10,8 +10,6 @@
   "devDependencies": {
     "prettier": "2.2.1"
   },
-  "dependencies": {
-    "concurrently": "6.0.0"
-  },
+  "dependencies": {},
   "description": ""
 }
