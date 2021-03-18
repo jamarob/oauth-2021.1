@@ -1,7 +1,6 @@
 {
   "name": "oauth-2021",
   "version": "0.0.1",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "prettier": "prettier --write ."
@@ -13,5 +12,6 @@
   },
   "dependencies": {
     "concurrently": "6.0.0"
-  }
+  },
+  "description": ""
 }
