@@ -1,10 +1,11 @@
 const express = require('express')
-const { existsByUsername } = require('./database/userRepo')
+const { existsByUsername, findByUsername } = require('./database/userRepo')
+const jwtAuthFilter = require('./middleware/jwtAuthFilter')
 const {
   exchangeCodeForToken,
   getLoggedInUser,
 } = require('./services/githubService')
-const { createToken } = require('./services/jwtService')
+const { createToken, verifyToken } = require('./services/jwtService')
 
 const app = express()
 
@@ -25,6 +26,12 @@ app.get('/auth/login/github/:code', async (request, response) => {
   const jwt = createToken(username)
 
   return response.status(200).json(jwt)
+})
+
+app.get('/api/profile', jwtAuthFilter, (request, response) => {
+  const user = findByUsername(response.locals.username)
+
+  return response.status(200).json(user)
 })
 
 module.exports = app

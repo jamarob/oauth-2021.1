@@ -8,4 +8,7 @@ const users = [
 const existsByUsername = (username) =>
   users.some((user) => user.username === username)
 
-module.exports = { existsByUsername }
+const findByUsername = (username) =>
+  users.find((user) => user.username === username)
+
+module.exports = { existsByUsername, findByUsername }

@@ -16,4 +16,12 @@ const createToken = (username) => {
   return jwt.sign(claims, JWT_SECRET)
 }
 
-module.exports = { createToken }
+const verifyToken = (token) => {
+  try {
+    return jwt.verify(token, JWT_SECRET)
+  } catch (error) {
+    return null
+  }
+}
+
+module.exports = { createToken, verifyToken }
