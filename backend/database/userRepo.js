@@ -1,0 +1,11 @@
+const users = [
+  {
+    username: 'jamarob',
+    favoriteAnimal: 'Dogs',
+  },
+]
+
+const existsByUsername = (username) =>
+  users.some((user) => user.username === username)
+
+module.exports = { existsByUsername }

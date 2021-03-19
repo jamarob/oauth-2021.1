@@ -1,4 +1,5 @@
 import { Switch, Route } from 'react-router-dom'
+import GithubRedirect from './auth/GithubRedirect'
 import Navbar from './components/Navbar'
 import PageLayout from './components/PageLayout'
 import Home from './pages/Home'
@@ -13,6 +14,7 @@ export default function App() {
         <Route exact path="/" component={Home} />
         <Route path="/profile" component={Profile} />
         <Route path="/login" component={Login} />
+        <Route path="/oauth/github/redirect" component={GithubRedirect} />
       </Switch>
     </PageLayout>
   )
