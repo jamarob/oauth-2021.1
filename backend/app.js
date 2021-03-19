@@ -4,6 +4,7 @@ const {
   exchangeCodeForToken,
   getLoggedInUser,
 } = require('./services/githubService')
+const { createToken } = require('./services/jwtService')
 
 const app = express()
 
@@ -12,16 +13,18 @@ app.get('/auth/login/github/:code', async (request, response) => {
 
   if (!code) return response.status(401).send('no code')
 
-  const token = await exchangeCodeForToken(code)
+  const githubToken = await exchangeCodeForToken(code)
 
-  if (!token) return response.status(401).send('invalid code')
+  if (!githubToken) return response.status(401).send('invalid code')
 
-  const username = await getLoggedInUser(token)
+  const username = await getLoggedInUser(githubToken)
 
   if (!existsByUsername(username))
     return response.status(401).send('unknown user')
 
-  return response.status(200).json(username)
+  const jwt = createToken(username)
+
+  return response.status(200).json(jwt)
 })
 
 module.exports = app
